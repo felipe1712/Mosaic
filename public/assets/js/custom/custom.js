@@ -147,21 +147,25 @@
 	} catch (err) { }
 
 	// Clipboard
-	new ClipboardJS('.copy-btn');
+	if (typeof ClipboardJS !== 'undefined') {
+		new ClipboardJS('.copy-btn');
+	}
 
 	// Popover
 	const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 	const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
 	// Drag & Drop
-	sortable('.js-grid', {
-		forcePlaceholderSize: true,
-		placeholderClass: 'border'
-	});
-	sortable('.o-sortable', {
-		forcePlaceholderSize: true,
-		placeholderClass: 'border'
-	});
+	if (typeof sortable !== 'undefined') {
+		sortable('.js-grid', {
+			forcePlaceholderSize: true,
+			placeholderClass: 'border'
+		});
+		sortable('.o-sortable', {
+			forcePlaceholderSize: true,
+			placeholderClass: 'border'
+		});
+	}
 
 	// Multiple Range Sliders
 	const getRangeSlidersId = document.querySelectorAll('slider');
